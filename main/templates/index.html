@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container mt-5'>
+  <div>
+	<img src='../static/assets/singlekey_logo.png' style='width:120px; height:52px;' align='left' />
+	<div align='right'>
+	  <button type="button" class="btn btn-outline-primary" style='width:120px; height:52px;'>Log in</button>
+	</div>
+  </div>
+  <hr>
+  <div class="row d-none d-lg-flex">
+    <div class="column" style='width:70%'>
+	  <form method='POST' role="form">
+		<div align='left' style='font-weight:bold; font-size:large;'>Submit information</div>
+		<br>
+        <div class='form-group' align='left'>
+		  <label for="name" style='font-weight:bold;'>Applicant name</label><br>
+		  <input id='name' name='name' class="form-control" placeholder="Applicant name">
+		</div>
+		<br>
+        <div class='form-group' align='left'>
+		  <label for="email" style='font-weight:bold;'>Email address</label><br>
+		  <input id='email' name='email' class="form-control" placeholder="Email address" type='email'>
+		</div>
+		<br>
+		{% csrf_token %}
+		<div align='left'>
+		  <button type='supmit' class='btn btn-primary' style='background-color:Indigo;'>Submit</button>
+		</div>
+	  </form>
+	  <hr>
+	  {% if results %}
+	    <div class='w-100 text-left mt-5'>
+		  <h3>Submissions</h3>
+		  <table class="table">
+		    <thead>
+		  	  <tr>
+			    <th scope="col"></th>
+			    <th scope="col" style='font-weight:bold;'>Applicant</th>
+			    <th scope="col" style='font-weight:bold;'>Email</th>
+			    <th scope="col" style='font-weight:bold;'>Status</th>
+			    <th scope="col" style='font-weight:bold;'>Time</th>
+			  </tr>
+		    </thead>
+		    <tbody>
+			{% for i in results %}
+			  <tr>
+				<th scope="row"><img src='../static/assets/personnel.png' style='width:20px; height:20px;'/></th>
+				<td style='font-weight:bold;'>{{ i.name }}</td>
+				<td>{{ i.email }}</td>
+				<td>{{ i.status }}</td>
+				<td>{{ i.time }}</td>
+			  </tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+	  </div>
+	{% endif %}
+	</div>
+    <div class="column">
+	  <div style='padding-left:20px;'>
+	    <div class='text-left card' style='background: rgb(50,9,121); background: linear-gradient(90deg, rgba(50,9,121,1) 50%, rgba(9,21,121,1) 75%, rgba(0,212,255,1) 100%);'>
+		  <div style='padding: 20px 20px 20px 20px;'>
+		    <div style='font-weight:bold; font-size:large; color:white;'>Hello Alex</div>
+		    <br>
+		    <div style='color:white;'>Here is a quick summary of your activity so far. If you have any questions about your report feel free to book a call with us.</div>
+		    <br>
+	        <button type="button" class="btn btn-outline-light" style='width:120px; height:52px; color:white;'>Book a call</button>
+	      </div>
+	    </div>
+		<br>
+	    <div class='text-left card'>
+		  <div style='padding: 20px 20px 20px 20px;'>
+		    <div style='font-weight:bold; font-size:large;'>Rent Guarantee</div>
+		    <br>
+		    <div>Never miss a rent payment! Learn how our Rent Guarantee Program protects your property and rental income so you can take the risk out of renting</div>
+		    <br>
+	        <button type="button" class="btn btn-outline-dark" style='width:120px; height:52px;'>Start now</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+  <div class="row d-flex d-lg-none" style='zoom:2;'>
+	  <div style='padding-left:20px;'>
+	    <div class='text-left card' style='background: rgb(50,9,121); background: linear-gradient(90deg, rgba(50,9,121,1) 50%, rgba(9,21,121,1) 75%, rgba(0,212,255,1) 100%);'>
+		  <div style='padding-left:20px;'>
+		    <div style='font-weight:bold; font-size:300%; color:white;'>Hello Alex</div>
+		    <br>
+		    <div style='color:white;'>Here is a quick summary of your activity so far. If you have any questions about your report feel free to book a call with us.</div>
+		    <br>
+	        <button type="button" class="btn btn-outline-light" style='width:120px; height:52px; color:white; font-size:200%;'>Book a call</button>
+	      </div>
+	    </div>
+		<br>
+	  <form method='POST'>
+		<div align='left' style='font-weight:bold; font-size:300%;'>Submit information</div>
+		<br>
+        <div class='form-group' align='left'>
+		  <label for="name" style='font-weight:bold; font-size:200%;'>Applicant name</label><br>
+		  <input id='name' name='name' class="form-control" placeholder="Applicant name" style='zoom:1.5;'>
+		</div>
+		<br>
+        <div class='form-group' align='left'>
+		  <label for="email" style='font-weight:bold; font-size:200%;'>Email address</label><br>
+		  <input id='email' name='email' class="form-control" placeholder="Email address" style='zoom:1.5;'>
+		</div>
+		<br>
+		{% csrf_token %}
+		<div align='left'>
+		  <button type='supmit' class='btn btn-primary' style='background-color:Indigo; font-size:200%;'>Submit</button>
+		</div>
+	  </form>
+	  <hr>
+	  {% if results %}
+	    <div class='w-100 text-left mt-5'>
+		  <h3>Submissions</h3>
+		  {% for i in results %}
+			<div class='text-left card' style='padding-left:20px;'>
+			  <div class='row' style='padding-right:20px;'>
+			    <img src='../static/assets/personnel.png' style='width:20px; height:20px;'/>
+			    <div style='font-weight:bold; font-size:200%;'>{{ i.name }}</div>
+			    <div style='background-color:chartreuse; color:green;' class='ml-auto'>{{ i.status }}</div>
+			  </div>
+			  <div>{{ i.email }}</div>
+			  <div>{{ i.time }}</div>
+			</div>
+			<br>
+		  {% endfor %}
+	    </div>
+	  {% endif %}
+	  <div class='text-left card'>
+		<div style='padding-left:20px;'>
+		  <div style='font-weight:bold; font-size:300%;'>Rent Guarantee</div>
+		  <br>
+		  <div>Never miss a rent payment! Learn how our Rent Guarantee Program protects your property and rental income so you can take the risk out of renting</div>
+		  <br>
+	      <button type="button" class="btn btn-outline-dark" style='width:120px; height:52px; font-size:200%;'>Start now</button>
+	    </div>
+	  </div>
+	</div>
+  </div>
+  <div class="footer" style='background-color:Indigo;'>
+	<p style="color:white; padding: 10px 40px;" align='left'>© All rights reserved SingleKey 2021</p>
+  </div>
+</div>
+{% endblock %}

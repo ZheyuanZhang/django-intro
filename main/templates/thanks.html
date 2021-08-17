@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='form-container mt-5'>
+    <div class='text-center'>
+      <img src='{% static 'assets/check.png' %}' style='height: 3em;margin-bottom:1.5%;'>
+      <h3 class='sk-dark-blue' style='font-weight: 500;margin-bottom: 1.5%;'>Thank you for your submission!</h3>
+    </div>
+    <br>
+    <p>
+      Thanks for your submission. <b>{{ name }}</b> has been added to our list of known submissions. Their email is <b>{{ email }}</b> Press the button below to navigate back to the index.
+    </p>
+    <br>
+    <div class='w-100 h-100 d-flex align-items-center flex-column justify-content-center text-center'>
+      <h5 class='sk-dark-blue'>We are reviewing your application and will reach out to your shortly.</h5>
+      <br>
+      <button class='btn btn-secondary mr-lg-3 mb-lg-0 mb-4' onclick='window.location.href = "/index"' style="width: 13em;margin-top:1%;" >Return To Index</button>
+    </div>
+  </div>
+{% endblock %}
